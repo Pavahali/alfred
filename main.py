@@ -9,6 +9,10 @@ async def help(ctx):
     await ctx.send('Я ничего не умею!')
 
 @client.command()
+async def version(ctx):
+    await ctx.send('0.1')
+
+@client.command()
 async def load(ctx, cog):
     client.load_extension(f'cogs.{cog}')
 
