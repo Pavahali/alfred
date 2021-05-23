@@ -32,13 +32,13 @@ class events(commands.Cog):
                     return
                 await message.channel.send(f'Удалено сообщение {message.author} с пингом {pings[0]}')
             else:
-                msg = f'Удалено сообщение {message.author} с пингами:```'
+                msg = f'Удалено сообщение {message.author} с пингами:\n```'
                 for i in pings:
                     msg += i + '\n'
-                await message.channel.send(msg + '```')
+                await message.channel.send(msg + '\n```')
             await message.channel.send(f"Содержание:```{message.content}```")
 
-            if 'Aibat#1262' in pings:
+            if str(message.author) == 'Aibat#1262':
                 await message.channel.send(f"Айбат, не шали :smirk:")
 
 def setup(bot):
