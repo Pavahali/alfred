@@ -9,6 +9,7 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Я запустився')
+        await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="Creep - Radiohead"))
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -39,7 +40,7 @@ class events(commands.Cog):
                 for i in pings:
                     msg += i + '\n'
                 await message.channel.send(msg + '\n```')
-            await message.channel.send(f"Содержание:```{message.content}```")
+            await message.channel.send(f"Содержание:\n```\n{message.content}\n```")
 
             if str(message.author) == 'Aibat#1262':
                 await message.channel.send(f"Айбат, не шали :smirk:")
