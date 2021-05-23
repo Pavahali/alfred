@@ -16,8 +16,11 @@ class events(commands.Cog):
             pings = []
             for i in message.mentions:
                 pings.append(str(i))
+
             if str(message.author) in pings:
                 await message.channel.send('Селфпинг? :face_with_raised_eyebrow:')
+            if 'alfred#0683' in pings:
+                await message.channel.send('Ахуел?')
 
     @commands.Cog.listener()
     async def on_message_delete(self, message):
