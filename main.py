@@ -10,7 +10,7 @@ async def help(ctx):
 
 @client.command()
 async def version(ctx):
-    await ctx.send('0.1')
+    await ctx.send('0.1.1')
 
 @client.command()
 async def load(ctx, cog):
