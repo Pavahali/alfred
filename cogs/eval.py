@@ -3,8 +3,8 @@ from time import time
 from discord.ext import commands
 import discord
 
-class eval:
-    def __init__(self):
+class eval(commands.Cog):
+    def __init__(self, bot):
         pass
 
     def resolve_variable(self, variable):
