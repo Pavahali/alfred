@@ -1,6 +1,6 @@
 from discord.ext import commands
 import discord
-
+import random
 
 class events(commands.Cog):
     def __init__(self, bot):
@@ -10,6 +10,11 @@ class events(commands.Cog):
     async def on_ready(self):
         print('Я запустився')
         await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.1.8"))
+        channel = self.bot.get_channel(618044439939645444)
+        if random.randint(1,100) <= 80:
+            await channel.send("Я запустился")
+        else:
+            await channel.send("Я Лунтик! Я снова с вами!")
 
     @commands.Cog.listener()
     async def on_message(self, message):
