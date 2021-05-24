@@ -34,6 +34,8 @@ class events(commands.Cog):
             if len(pings) == 1:
                 if str(message.author) in pings:
                     return
+                elif 'alfred#0683' in pings:
+                    await message.channel.send(f'Удалено сообщение, с пингом меня')
                 await message.channel.send(f'Удалено сообщение {message.author} с пингом {pings[0]}')
             else:
                 msg = f'Удалено сообщение {message.author} с пингами:\n```'
@@ -44,10 +46,11 @@ class events(commands.Cog):
 
             if str(message.author) == 'Aibat#1262':
                 await message.channel.send(f"Айбат, не шали :smirk:")
+
         if str(message.author) == 'alfred#0683':
             if message.content.startswith("Удалено"):
-                msg += (f'Кто то удалил сообщение... Я написал, что:\n{message.content}')
-            elif ("Я написал, что:" in message.content):
+                await message.channel.send(f'Кто то удалил сообщение... Я написал, что:\n{message.content}')
+            elif message.content.startswith('Кто то удалил'):
                 await message.channel.send(f'Кто то опять удалил сообщение... Я написал, что:\n{message.content[33:]}')
 
 
