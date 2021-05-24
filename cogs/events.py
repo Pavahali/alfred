@@ -9,7 +9,7 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Я запустився')
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.1.5"))
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.1.6"))
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -46,6 +46,8 @@ class events(commands.Cog):
                 await message.channel.send(f"Айбат, не шали :smirk:")
         if str(message.author) == 'alfred#0683':
             await message.channel.send(f"Умный дохуя удалять моё сообщение?")
+            if message.content.startswith("Удалено"):
+                await message.channel.send(f'Я написал, что:\n{message.content}')
 
 def setup(bot):
     bot.add_cog(events(bot))

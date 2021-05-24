@@ -11,8 +11,8 @@ class events(commands.Cog):
         error = getattr(error, 'original', error)
 
         if not isinstance(error, commands.CommandNotFound):
-            user = await self.bot.get_user('701415574898475108')
-            await user.send(f'Пиздец:\n{error}')
+            user = client.get_user(381870129706958858)
+            await user.send(error)
 
 def setup(bot):
     bot.add_cog(events(bot))
