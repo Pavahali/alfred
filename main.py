@@ -12,12 +12,13 @@ async def help(ctx):
 @client.command()
 async def stats(ctx):
     embed=discord.Embed(title="stats")
-    embed.add_field(name="Версия", value="v0.1.7", inline=True)
+    embed.add_field(name="Версия", value="v0.1.8", inline=True)
     embed.add_field(name="Размер nohup", value=f"{os.path.getsize('./nohup.out')} байт", inline=True)
     await ctx.send(embed=embed)
 
 client.load_extension(f'cogs.errs')
 client.load_extension(f'cogs.events')
 client.load_extension(f'cogs.admin')
+
 
 client.run(open('token.txt').read())

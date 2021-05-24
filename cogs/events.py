@@ -9,7 +9,7 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Я запустився')
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.1.7"))
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.1.8"))
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -50,9 +50,9 @@ class events(commands.Cog):
 
         if str(message.author) == 'alfred#0683':
             if message.content.startswith("Удалено"):
-                await message.channel.send(f'Кто то удалил сообщение... Я написал, что:\n{message.content}')
-            elif message.content.startswith('Кто то удалил'):
-                await message.channel.send(f'Кто то удалил сообщение... Я написал, что:\n{message.content[43:]}')
+                await message.channel.send(f'Кто-то удалил сообщение... Я написал, что:\n{message.content}')
+            elif message.content.startswith('Кто-то удалил'):
+                await message.channel.send(f'Кто-то удалил сообщение... Я написал, что:\n{message.content[43:]}')
 
 def setup(bot):
     bot.add_cog(events(bot))
