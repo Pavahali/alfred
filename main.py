@@ -10,14 +10,16 @@ async def help(ctx):
 
 @client.command()
 async def version(ctx):
-    await ctx.send('0.1.2')
+    await ctx.send('0.1.3')
 
+@commands.is_owner()
 @client.command()
 async def load(ctx, cog):
     client.load_extension(f'cogs.{cog}')
     await ctx.send(f'{cog} подгрузился')
     print(f'Включен ког {cog}')
 
+@commands.is_owner()
 @client.command()
 async def unload(ctx, cog):
     client.unload_extension(f'cogs.{cog}')

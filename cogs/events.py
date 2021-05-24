@@ -9,7 +9,7 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Я запустився')
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.1.1"))
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.1.3"))
 
     @commands.Cog.listener()
     async def on_message(self, message):
