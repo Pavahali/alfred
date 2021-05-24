@@ -1,5 +1,6 @@
 from discord.ext import commands
 import discord
+import os
 
 client = commands.Bot(command_prefix='.')
 client.remove_command('help')
@@ -9,8 +10,11 @@ async def help(ctx):
     await ctx.send('Я ничего не умею!')
 
 @client.command()
-async def version(ctx):
-    await ctx.send('0.1.3')
+async def stats(ctx):
+    embed=discord.Embed(title="stats")
+    embed.add_field(name="Версия", value="v0.1.4", inline=True)
+    embed.add_field(name="Размер nohup", value=f"{os.path.getsize('./nohup.out')} байт", inline=True)
+    await ctx.send(embed=embed)
 
 @commands.is_owner()
 @client.command()
