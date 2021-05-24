@@ -4,7 +4,7 @@ from discord.ext import commands
 import discord
 
 class eval(commands.Cog):
-    def __init__(self, bot):
+    def __init__(self):
         pass
 
     def resolve_variable(self, variable):
