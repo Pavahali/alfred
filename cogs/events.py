@@ -46,7 +46,7 @@ class events(commands.Cog):
                 await message.channel.send(f"Айбат, не шали :smirk:")
         if str(message.author) == 'alfred#0683':
             await message.channel.send(f"Умный дохуя удалять моё сообщение?")
-            if message.content.startswith("Удалено"):
+            if message.content.startswith("Удалено") or message.content.startswith("Я написал, что:"):
                 await message.channel.send(f'Я написал, что:\n{message.content}')
 
 def setup(bot):
