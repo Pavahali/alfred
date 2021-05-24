@@ -18,6 +18,6 @@ async def stats(ctx):
 
 client.load_extension(f'cogs.errs')
 client.load_extension(f'cogs.events')
-
+client.load_extension(f'cogs.admin')
 
 client.run(open('token.txt').read())
