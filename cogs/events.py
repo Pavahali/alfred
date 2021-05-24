@@ -52,7 +52,7 @@ class events(commands.Cog):
             if message.content.startswith("Удалено"):
                 await message.channel.send(f'Кто то удалил сообщение... Я написал, что:\n{message.content}')
             elif message.content.startswith('Кто то удалил'):
-                await message.channel.send(f'Кто то удалил сообщение... Я написал, что:\n{message.content[33:]}')
+                await message.channel.send(f'Кто то удалил сообщение... Я написал, что:\n{message.content[42:]}')
 
 def setup(bot):
     bot.add_cog(events(bot))
