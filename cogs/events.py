@@ -54,7 +54,7 @@ class events(commands.Cog):
             elif message.content.startswith('Кто то удалил'):
                 await message.channel.send(f'Кто то опять удалил сообщение... Я написал, что:\n{message.content[33:]}')
             elif message.content.startswith('Кто то опять удалил'):
-                await.message.channel.send(f'Кто то опять удалил сообщение... Я написал, что:\n{message.content[42:]}')
+                await message.channel.send(f'Кто то опять удалил сообщение... Я написал, что:\n{message.content[42:]}')
 
 
 def setup(bot):
