@@ -14,10 +14,10 @@ class events(commands.Cog):
         [["утречка", "доброе утро"], "🌞"],
         [["ку", "прив", "привет", "хай"], "👋"]
         ]
-        
+
         for j in responces:
             for i in j[0]:
-                if i in message.content:
+                if i in message.content.lower():
                     await message.add_reaction(j[1])
 
 def setup(bot):
