@@ -19,7 +19,7 @@ class MyCog(commands.Cog):
         await ctx.send(f'{cog} выключен')
         print(f'Выключен ког {cog}')
 
-    @client.command()
+    @commands.command()
     @commands.is_owner()
     async def shutdown(self, ctx):
         channel = self.bot.get_channel(12324234183172)
