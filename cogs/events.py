@@ -36,6 +36,7 @@ class events(commands.Cog):
                     return
                 elif 'alfred#0683' in pings:
                     await message.channel.send(f'Удалено сообщение, с пингом меня')
+                    return
                 await message.channel.send(f'Удалено сообщение {message.author} с пингом {pings[0]}')
             else:
                 msg = f'Удалено сообщение {message.author} с пингами:\n```'
