@@ -22,7 +22,7 @@ class MyCog(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def shutdown(self, ctx):
-        channel = self.bot.get_channel(12324234183172)
+        channel = self.bot.get_channel(618044439939645444)
         await channel.send('Я выключаюсь...')
         await self.bot.logout()
 
