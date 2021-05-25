@@ -12,7 +12,7 @@ async def help(ctx):
 @client.command()
 async def stats(ctx):
     embed=discord.Embed(title="stats")
-    embed.add_field(name="Версия", value="v0.2.0", inline=True)
+    embed.add_field(name="Версия", value="v0.2.1", inline=True)
     embed.add_field(name="Что нового", value=f'+логи', inline=True)
     embed.add_field(name="Размер nohup", value=f"{os.path.getsize('../nohup.out')} байт", inline=True)
     embed.add_field(name="Размер логов", value=f"{os.path.getsize('./logs.log')} байт", inline=True)
