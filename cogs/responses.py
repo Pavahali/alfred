@@ -1,6 +1,6 @@
 from discord.ext import commands
 import discord
-
+import logs
 
 class events(commands.Cog):
     def __init__(self, bot):
@@ -19,6 +19,8 @@ class events(commands.Cog):
             for i in j[0]:
                 if i in message.content.lower():
                     await message.add_reaction(j[1])
+                    log(f'+ reaction {j[1]}', '0')
+
 
 def setup(bot):
     bot.add_cog(events(bot))

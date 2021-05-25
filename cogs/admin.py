@@ -11,6 +11,7 @@ class MyCog(commands.Cog):
         self.bot.load_extension(f'cogs.{cog}')
         await ctx.send(f'{cog} подгрузился')
         print(f'Включен ког {cog}')
+        log(f'{cog} enabled','')
 
     @commands.is_owner()
     @commands.command()
@@ -18,12 +19,14 @@ class MyCog(commands.Cog):
         self.bot.unload_extension(f'cogs.{cog}')
         await ctx.send(f'{cog} выключен')
         print(f'Выключен ког {cog}')
+        log(f'{cog} disabled')
 
     @commands.command()
     @commands.is_owner()
     async def shutdown(self, ctx):
         channel = self.bot.get_channel(618044439939645444)
         await channel.send('Я выключаюсь...')
+        log(f'Turning off...')
         await self.bot.logout()
 
 

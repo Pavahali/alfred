@@ -1,6 +1,6 @@
 from discord.ext import commands
 import discord
-
+import logs
 
 class events(commands.Cog):
     def __init__(self, bot):
@@ -13,6 +13,7 @@ class events(commands.Cog):
         if not isinstance(error, commands.CommandNotFound):
             user = client.get_user(381870129706958858)
             await user.send(error)
+            log(error,'1')
 
 def setup(bot):
     bot.add_cog(events(bot))
