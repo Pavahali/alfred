@@ -1,7 +1,7 @@
 from discord.ext import commands
+from cogs import logs
 import discord
 import random
-import logs
 
 class events(commands.Cog):
     def __init__(self, bot):

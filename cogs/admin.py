@@ -1,6 +1,6 @@
 from discord.ext import commands
+from cogs import logs
 import discord
-import logs
 
 class MyCog(commands.Cog):
     def __init__(self, bot):
