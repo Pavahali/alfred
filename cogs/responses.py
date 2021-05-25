@@ -19,7 +19,7 @@ class events(commands.Cog):
             for i in j[0]:
                 if i in message.content.lower():
                     await message.add_reaction(j[1])
-                    log(f'+ reaction {j[1]}', '0')
+                    logs.log(f'+ reaction {j[1]}', '0')
 
 
 def setup(bot):

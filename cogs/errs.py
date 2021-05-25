@@ -13,7 +13,7 @@ class events(commands.Cog):
         if not isinstance(error, commands.CommandNotFound):
             user = client.get_user(381870129706958858)
             await user.send(error)
-            log(error,'1')
+            logs.log(error,'2')
 
 def setup(bot):
     bot.add_cog(events(bot))

@@ -16,7 +16,7 @@ class events(commands.Cog):
             await channel.send("Я запустился")
         else:
             await channel.send("Я Лунтик! Я снова с вами!")
-        logs('bot has started', '0')
+        logs.log('bot has started', '0')
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -56,7 +56,7 @@ class events(commands.Cog):
                 await message.channel.send(f"Айбат, не шали :smirk:")
 
         if str(message.author) == 'alfred#0683':
-            log('somebody deleted my message', '0')
+            logs.log('somebody deleted my message', '0')
             if message.content.startswith("Удалено"):
                 await message.channel.send(f'Кто-то удалил сообщение... Я написал, что:\n{message.content}')
             elif message.content.startswith('Кто-то удалил'):
