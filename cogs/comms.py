@@ -22,7 +22,7 @@ class comms(commands.Cog):
             else:
                 pings.append('-')
 
-        embed=discord.Embed(title="История пингов", description=f"История пингов {ctx.author}"))
+        embed=discord.Embed(title="История пингов", description=f"История пингов {ctx.author}")
         if pings[2] != '-':
             embed.add_field(name=" ", value=pings[2], inline=False)
         else:
