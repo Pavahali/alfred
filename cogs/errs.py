@@ -11,7 +11,7 @@ class events(commands.Cog):
         error = getattr(error, 'original', error)
 
         if not isinstance(error, commands.CommandNotFound):
-            user = client.get_user(381870129706958858)
+            user = self.bot.fetch_user(701415574898475108)
             await user.send(error)
             logs.log(error,'2')
 

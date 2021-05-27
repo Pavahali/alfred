@@ -1,3 +1,4 @@
+# Not a cog
 import logging
 
 def log(message, level='0'):

@@ -4,7 +4,9 @@ import discord
 import os
 
 pt.setproctitle('alfred')
-client = commands.Bot(command_prefix='.')
+
+intents = discord.Intents().all()
+client = commands.Bot(command_prefix='?', intents = intents)
 client.remove_command('help')
 
 @client.command()
@@ -14,15 +16,16 @@ async def help(ctx):
 @client.command()
 async def stats(ctx):
     embed=discord.Embed(title="stats")
-    embed.add_field(name="Версия", value="v0.2.2", inline=True)
+    embed.add_field(name="Версия", value="v0.3.0", inline=True)
     embed.add_field(name="Название процесса", value=pt.getproctitle(), inline=True)
     embed.add_field(name="Размер nohup", value=f"{round(os.path.getsize('nohup.out') / 1024, 2)} килобайт", inline=True)
     embed.add_field(name="Размер логов", value=f"{round(os.path.getsize('logs.log') / 1024, 2)} килобайт", inline=True)
     await ctx.send(embed=embed)
 
-client.load_extension(f'cogs.responses')
-client.load_extension(f'cogs.events')
-client.load_extension(f'cogs.admin')
-client.load_extension(f'cogs.errs')
+client.load_extension('cogs.responses')
+client.load_extension('cogs.events')
+client.load_extension('cogs.admin')
+client.load_extension('cogs.comms')
+client.load_extension('cogs.errs')
 
 client.run(open('token.txt').read())

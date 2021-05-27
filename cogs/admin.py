@@ -2,9 +2,18 @@ from discord.ext import commands
 from cogs import logs
 import discord
 
-class MyCog(commands.Cog):
+class admin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    @commands.is_owner()
+    @commands.command()
+    async def unload(self, ctx, cog):
+        self.bot.unload_extension(f'cogs.{cog}')
+        self.bot.load_extension(f'cogs.{cog}')
+        await ctx.send(f'{cog} перезагружен')
+        print(f'Перезагружен ког {cog}')
+        logs.log(f'{cog} reloaded','0')
 
     @commands.is_owner()
     @commands.command()
@@ -32,4 +41,4 @@ class MyCog(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(MyCog(bot))
+    bot.add_cog(admin(bot))
