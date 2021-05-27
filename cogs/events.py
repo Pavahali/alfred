@@ -24,7 +24,7 @@ class events(commands.Cog):
         if message.mentions:
             for i in message.mentions:
                 user = db.ruser(i.id)
-                if message.author.id != '822366187577016350':
+                if str(message.author) != 'alfred#0683':
                     user["lastpings"].append(str(message.author.id))
                     user["lastpings"].pop(0)
                     db.wuser(i.id, user)
