@@ -22,11 +22,16 @@ class comms(commands.Cog):
             else:
                 pings.append('-')
 
-        embed=discord.Embed(title="Ктопнул", description=str(ctx.author))
-        embed.add_field(name="1", value=pings[2], inline=False)
-        embed.add_field(name="2", value=pings[1], inline=False)
-        embed.add_field(name="3", value=pings[0], inline=False)
-        await ctx.send(embed=embed)
+        embed=discord.Embed(title="История пингов", description=f"История пингов {ctx.author}"))
+        if pings[2] != '-':
+            embed.add_field(name=" ", value=pings[2], inline=False)
+        else:
+            embed.add_field(name=" ", value="Никто не пинговал")
+        if pings[1] != '-':
+            embed.add_field(name=" ", value=pings[1], inline=False)
+        if pings[0] != '-':
+            embed.add_field(name=" ", value=pings[0], inline=False)
+        await ctx.reply(embed=embed)
 
 def setup(bot):
     bot.add_cog(comms(bot))
