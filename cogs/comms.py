@@ -11,7 +11,7 @@ class comms(commands.Cog):
 
     @commands.command(aliases=["ктопнул"])
     async def whopinged(self, ctx):
-        user = db.ruser(ctx.author.id)
+        user = await db.ruser(ctx.author.id)
 
         pings = []
         for i in user["lastpings"]:

@@ -1,28 +1,30 @@
 # Not a cog
-import json
+from aiofile import async_open
 from cogs import logs
+import json
 import os
 
-def wuser(userid, content):
-    with open('./cogs/db.json','r') as f:
-        db = json.load(f)
+async def wuser(userid, content):
+    async with async_open('./cogs/db.json','r') as f:
+        db = json.loads(await f.read())
 
     if str(userid) in db["users"]:
         db["users"][str(userid)].update(content)
     else:
         db["users"][str(userid)] = content
-        
-    with open('./cogs/db.json', 'w') as f:
-        json.dump(db,f, indent=4)
+
+    async with async_open('./cogs/db.json', 'w') as f:
+        f.seek(0)
+        await f.write(json.dumps(db, indent=4))
 
     logs.log(f'changed userinfo for {userid}', '0')
 
 
-def ruser(userid):
+async def ruser(userid):
     userid = str(userid)
 
-    with open('./cogs/db.json') as f:
-        db = json.load(f)
+    async with async_open('./cogs/db.json', 'r') as f:
+        db = json.loads(await f.read())
 
     if userid in db["users"]:
         return db["users"][userid]
