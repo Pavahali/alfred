@@ -11,7 +11,7 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Я запустився')
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.3.1"))
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.3.3"))
         channel = self.bot.get_channel(618044439939645444)
         if random.randint(1,100) <= 80:
             await channel.send("Я запустился")
@@ -24,10 +24,9 @@ class events(commands.Cog):
         if message.mentions:
             for i in message.mentions:
                 user = db.ruser(i.id)
-                if str(message.author) != 'alfred#0683':
-                    user["lastpings"].append(str(message.author.id))
-                    user["lastpings"].pop(0)
-                    db.wuser(i.id, user)
+                user["lastpings"].append(str(message.author.id))
+                user["lastpings"].pop(0)
+                db.wuser(i.id, user)
 
             pings = []
             for i in message.mentions:

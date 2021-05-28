@@ -1,7 +1,6 @@
 from discord.ext import commands
 from cogs import logs
 import discord
-from cogs import logs
 from cogs import db
 
 
@@ -32,7 +31,7 @@ class comms(commands.Cog):
         if pings[0] != '-':
             desc += "\n" + pings[0]
         embed=discord.Embed(title="Кто пнул", description=desc)
-        await ctx.reply(embed=embed)
+        await ctx.reply(embed=embed, mention_author=False)
 
 def setup(bot):
     bot.add_cog(comms(bot))

@@ -6,8 +6,9 @@ import os
 pt.setproctitle('alfred')
 
 intents = discord.Intents().all()
-client = commands.Bot(command_prefix='.', intents = intents)
+client = commands.Bot(command_prefix='.', intents=intents)
 client.remove_command('help')
+
 
 @client.command()
 async def help(ctx):
@@ -16,10 +17,11 @@ async def help(ctx):
 @client.command()
 async def stats(ctx):
     embed=discord.Embed(title="stats")
-    embed.add_field(name="Версия", value="v0.3.1", inline=True)
+    embed.add_field(name="Версия", value="v0.3.3", inline=True)
     embed.add_field(name="Название процесса", value=pt.getproctitle(), inline=True)
-    embed.add_field(name="Размер nohup", value=f"{round(os.path.getsize('nohup.out') / 1024, 2)} килобайт", inline=True)
+    embed.add_field(name="Размер nohup", value=f"{round(os.path.getsize('nohup.out') / 1024, 2)} килобайт", inline=False)
     embed.add_field(name="Размер логов", value=f"{round(os.path.getsize('logs.log') / 1024, 2)} килобайт", inline=True)
+    embed.add_field(name="Размер бд", value=f"{round(os.path.getsize('cogs/db.json') / 1024, 2)} килобайт", inline=True)
     await ctx.send(embed=embed)
 
 client.load_extension('cogs.responses')
