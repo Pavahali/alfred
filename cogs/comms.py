@@ -33,5 +33,6 @@ class comms(commands.Cog):
         embed=discord.Embed(title="Кто пнул", description=desc)
         await ctx.reply(embed=embed, mention_author=False)
 
+        
 def setup(bot):
     bot.add_cog(comms(bot))
