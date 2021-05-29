@@ -9,7 +9,7 @@ class admin(commands.Cog):
 
     @commands.is_owner()
     @commands.command()
-    async def unload(self, ctx, cog):
+    async def reload(self, ctx, cog):
         self.bot.unload_extension(f'cogs.{cog}')
         self.bot.load_extension(f'cogs.{cog}')
         await ctx.send(f'{cog} перезагружен')
@@ -35,8 +35,8 @@ class admin(commands.Cog):
     @commands.is_owner()
     @commands.command()
     async def shell(self, ctx, *, exec):
-        result = subprocess.run(exec, stdout=subprocess.PIPE)
-        await ctx.send(result.stdout)
+        result = subprocess.run(exec.split(' '), stdout=subprocess.PIPE).stdout.decode('utf-8')
+        await ctx.send(f"```{result}```")
 
 def setup(bot):
     bot.add_cog(admin(bot))
