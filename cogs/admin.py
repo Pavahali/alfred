@@ -1,5 +1,6 @@
 from discord.ext import commands
 from cogs import logs
+import subprocess
 import discord
 
 class admin(commands.Cog):
@@ -31,14 +32,11 @@ class admin(commands.Cog):
         print(f'Выключен ког {cog}')
         logs.log(f'{cog} disabled', '0')
 
-    @commands.command()
     @commands.is_owner()
-    async def shutdown(self, ctx):
-        channel = self.bot.get_channel(618044439939645444)
-        await channel.send('Я выключаюсь...')
-        log(f'Turning off...', '1')
-        await self.bot.logout()
-
+    @commands.command()
+    async def shell(self, ctx, *, exec):
+    result = subprocess.run(exec, stdout=subprocess.PIPE)
+    await ctx.send(result.stdout)
 
 def setup(bot):
     bot.add_cog(admin(bot))

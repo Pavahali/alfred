@@ -17,14 +17,13 @@ async def help(ctx):
 @client.command()
 async def stats(ctx):
     embed=discord.Embed(title="stats")
-    embed.add_field(name="Версия", value="v0.4.2", inline=True)
+    embed.add_field(name="Версия", value="v0.4.4", inline=True)
     embed.add_field(name="Пинг", value=round(ctx.bot.latency, 2) * 100, inline=True)
     embed.add_field(name="Размер nohup", value=f"{round(os.path.getsize('nohup.out') / 1024, 2)} килобайт", inline=True)
     embed.add_field(name="Размер логов", value=f"{round(os.path.getsize('logs.log') / 1024, 2)} килобайт", inline=True)
     embed.add_field(name="Размер бд", value=f"{round(os.path.getsize('cogs/db.json') / 1024, 2)} килобайт", inline=True)
     await ctx.send(embed=embed)
 
-client.load_extension('cogs.responses')
 client.load_extension('cogs.events')
 client.load_extension('cogs.admin')
 client.load_extension('cogs.comms')
