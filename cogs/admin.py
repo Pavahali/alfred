@@ -35,8 +35,8 @@ class admin(commands.Cog):
     @commands.is_owner()
     @commands.command()
     async def shell(self, ctx, *, exec):
-    result = subprocess.run(exec, stdout=subprocess.PIPE)
-    await ctx.send(result.stdout)
+        result = subprocess.run(exec, stdout=subprocess.PIPE)
+        await ctx.send(result.stdout)
 
 def setup(bot):
     bot.add_cog(admin(bot))
