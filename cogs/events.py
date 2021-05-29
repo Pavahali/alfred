@@ -11,9 +11,9 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Я запустився')
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.4.1"))
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.4.2"))
         channel = self.bot.get_channel(618044439939645444)
-        if random.randint(1,100) <= 80:
+        if random.randint(1,10) != 10:
             await channel.send("Я запустился")
         else:
             await channel.send("Я Лунтик! Я снова с вами!")
@@ -27,15 +27,6 @@ class events(commands.Cog):
                 user["lastpings"].append(str(message.author.id))
                 user["lastpings"].pop(0)
                 await db.wuser(i.id, user)
-
-            pings = []
-            for i in message.mentions:
-                pings.append(str(i))
-
-            if str(message.author) in pings:
-                await message.channel.send('Селфпинг? :face_with_raised_eyebrow:')
-            if 'alfred#0683' in pings:
-                await message.channel.send('Ахуел?')
 
     @commands.Cog.listener()
     async def on_message_delete(self, message):
