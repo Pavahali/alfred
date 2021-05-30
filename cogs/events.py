@@ -11,7 +11,7 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Я запустився')
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.4.4"))
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.4.5"))
         channel = self.bot.get_channel(618044439939645444)
         if random.randint(1,10) != 10:
             await channel.send("Я запустился")
@@ -31,6 +31,8 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_message_delete(self, message):
         if message.mentions:
+            async for msg in message.guild.audit_logs(action=discord.AuditLogAction.message_delete, limit=1):
+                bitch = msg.user
 
             pings = []
             for i in message.mentions:
@@ -42,12 +44,12 @@ class events(commands.Cog):
                 elif 'alfred#0683' in pings:
                     await message.channel.send(f'Удалено сообщение, с пингом меня')
                     return
-                await message.channel.send(f'Удалено сообщение {message.author} с пингом {pings[0]}')
+                await message.channel.send(f'Удалено сообщение `{message.author}` с пингом `{pings[0]}`\n(Удалил `{bitch}`)')
             else:
-                msg = f'Удалено сообщение {message.author} с пингами:\n```'
+                msg = f'Удалено сообщение `{message.author}` с пингами:\n```'
                 for i in pings:
                     msg += i + '\n'
-                await message.channel.send(msg + '\n```')
+                await message.channel.send(msg + f'\n```\n(Удалил `{bitch}`)')
             await message.channel.send(f"Содержание:\n```\n{message.content}\n```")
 
             if str(message.author) == 'Aibat#1262':
