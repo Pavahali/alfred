@@ -41,6 +41,8 @@ class comms(commands.Cog):
             if len(out) >= 1000:
                 await ctx.send('Слишком большое сообщение')
             else:
+                if '.i.' in text:
+                    out += "\nОригинально..."
                 await ctx.send("```\n" + out + "\n```")
         else:
             await ctx.send('Только ascii!')
