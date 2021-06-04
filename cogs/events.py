@@ -11,7 +11,7 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Я запустився')
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.4.5"))
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="v0.4.6"))
         channel = self.bot.get_channel(618044439939645444)
         if random.randint(1,10) != 10:
             await channel.send("Я запустился")

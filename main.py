@@ -17,7 +17,7 @@ async def help(ctx):
 @client.command()
 async def stats(ctx):
     embed=discord.Embed(title="stats")
-    embed.add_field(name="Версия", value="v0.4.5", inline=True)
+    embed.add_field(name="Версия", value="v0.4.6", inline=True)
     embed.add_field(name="Пинг", value=round(ctx.bot.latency, 2) * 100, inline=True)
     embed.add_field(name="Размер nohup", value=f"{round(os.path.getsize('nohup.out') / 1024, 2)} килобайт", inline=True)
     embed.add_field(name="Размер логов", value=f"{round(os.path.getsize('logs.log') / 1024, 2)} килобайт", inline=True)

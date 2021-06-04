@@ -1,7 +1,8 @@
 from discord.ext import commands
+from pyfiglet import Figlet
 from cogs import logs
-import discord
 from cogs import db
+import discord
 
 
 
@@ -33,6 +34,16 @@ class comms(commands.Cog):
         embed=discord.Embed(title="Кто пнул", description=desc)
         await ctx.reply(embed=embed, mention_author=False)
 
-        
+    @commands.command()
+    async def ascii(self, ctx, *, text):
+        if text.isascii():
+            out = Figlet(font='big').renderText(text)
+            if len(out) >= 1000:
+                await ctx.send('Слишком большое сообщение')
+            else:
+                await ctx.send("```\n" + out + "\n```")
+        else:
+            await ctx.send('Только ascii!')
+
 def setup(bot):
     bot.add_cog(comms(bot))
