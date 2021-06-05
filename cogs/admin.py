@@ -1,7 +1,9 @@
 from discord.ext import commands
 from cogs import logs
+from cogs import db
 import subprocess
 import discord
+import pprint
 
 class admin(commands.Cog):
     def __init__(self, bot):
@@ -38,14 +40,15 @@ class admin(commands.Cog):
         result = subprocess.run(exec.split(' '), stdout=subprocess.PIPE).stdout.decode('utf-8')
         await ctx.send(f"```{result}```")
 
-    @command.is_owner()
-    @command.command()
-    async def changedb(self, ctx, userid, action, msg=''):
+    @commands.is_owner()
+    @commands.command()
+    async def changedb(self, ctx, action, userid, msg=''):
         if action.lower() in ["del", "rem", "delete", "remove"]:
             await db.duser(userid)
+            await ctx.send(f'Юзер с айдишником {userid} был удалён')
         elif action.lower() in ["read", "get"]:
             user = await db.ruser(userid)
-            await ctx.send('```\n'+user+'\n```')
+            await ctx.send('```\n'+str(user).replace(',', ',\n')+'\n```')
 
         else:
             await ctx.send('Еблан, не то действие!')

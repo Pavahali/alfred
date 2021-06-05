@@ -42,7 +42,7 @@ async def ruser(userid):
     if userid in db["users"]:
         return db["users"][userid]
     else:
-        wuser(userid, db["dblook"])
+        await wuser(userid, db["dblook"])
         logs.log(f'created new user for {userid}', '0')
 
         return db["dblook"]
