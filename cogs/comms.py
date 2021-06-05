@@ -42,7 +42,7 @@ class comms(commands.Cog):
                 await ctx.send('Слишком большое сообщение')
             else:
                 if '.i.' in text:
-                    out += "\nОригинально..."
+                    out += "\n=ъх9оОригинально...=
                 await ctx.send("```\n" + out + "\n```")
         else:
             await ctx.send('Только ascii!')

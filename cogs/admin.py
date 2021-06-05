@@ -38,5 +38,19 @@ class admin(commands.Cog):
         result = subprocess.run(exec.split(' '), stdout=subprocess.PIPE).stdout.decode('utf-8')
         await ctx.send(f"```{result}```")
 
+    @command.is_owner()
+    @command.command()
+    async def changedb(self, ctx, userid, action, msg=''):
+        if action.lower() in ["del", "rem", "delete", "remove"]:
+            await db.duser(userid)
+        elif action.lower() in ["read", "get"]:
+            user = await db.ruser(userid)
+            await ctx.send('```\n'+user+'\n```')
+
+        else:
+            await ctx.send('Еблан, не то действие!')
+
+
+
 def setup(bot):
     bot.add_cog(admin(bot))

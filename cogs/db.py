@@ -4,6 +4,19 @@ from cogs import logs
 import json
 import os
 
+async def duser(userid):
+    async with async_open('./cogs/db.json','r') as f:
+        db = json.loads(await f.read())
+
+    del db["users"][userid]
+
+    async with async_open('./cogs/db.json', 'w') as f:
+        f.seek(0)
+        await f.write(json.dumps(db, indent=4))
+
+    logs.log(f"Deleted user with userid: {userid}")
+
+
 async def wuser(userid, content):
     async with async_open('./cogs/db.json','r') as f:
         db = json.loads(await f.read())
