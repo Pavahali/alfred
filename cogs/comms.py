@@ -47,7 +47,7 @@ class comms(commands.Cog):
 
     @commands.command(aliases=["repeat"])
     async def echo(self, ctx, *, msg=''):
-        await ctx.send(msg)
+        await ctx.send(msg, allowed_mentions=discord.AllowedMentions(everyone=False, users=True, roles=False))
 
 def setup(bot):
     bot.add_cog(comms(bot))
