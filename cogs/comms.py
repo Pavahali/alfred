@@ -45,5 +45,9 @@ class comms(commands.Cog):
         else:
             await ctx.send('Только ascii!')
 
+    @commands.command(aliases=["repeat"])
+    async def echo(ctx, *, msg):
+        await ctx.send(msg)
+
 def setup(bot):
     bot.add_cog(comms(bot))
