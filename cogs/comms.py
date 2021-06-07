@@ -46,7 +46,7 @@ class comms(commands.Cog):
             await ctx.send('Только ascii!')
 
     @commands.command(aliases=["repeat"])
-    async def echo(ctx, *, msg):
+    async def echo(self, ctx, *, msg=''):
         await ctx.send(msg)
 
 def setup(bot):
