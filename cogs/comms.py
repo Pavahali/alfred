@@ -29,7 +29,7 @@ class comms(commands.Cog):
             desc = "Никто не пинговал"
         if pings[1] != '-':
             desc += "\n" + pings[1]
-        if pings[0] != '-':
+        if pings[0] != '-': 
             desc += "\n" + pings[0]
         embed=discord.Embed(title="Кто пнул", description=desc)
         await ctx.reply(embed=embed, mention_author=False)
