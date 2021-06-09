@@ -29,7 +29,7 @@ class comms(commands.Cog):
             desc = "Никто не пинговал"
         if pings[1] != '-':
             desc += "\n" + pings[1]
-        if pings[0] != '-': 
+        if pings[0] != '-':
             desc += "\n" + pings[0]
         embed=discord.Embed(title="Кто пнул", description=desc)
         await ctx.reply(embed=embed, mention_author=False)
@@ -47,7 +47,7 @@ class comms(commands.Cog):
 
     @commands.command(aliases=["repeat"])
     async def echo(self, ctx, *, msg=''):
-        await ctx.send(msg, allowed_mentions=discord.AllowedMentions(everyone=False, users=True, roles=False))
+        await ctx.send(msg, allowed_mentions=discord.AllowedMentions(everyone=False, users=False, roles=False))
 
 def setup(bot):
     bot.add_cog(comms(bot))
