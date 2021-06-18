@@ -1,9 +1,7 @@
 from discord.ext import commands
 from pyfiglet import Figlet
-from cogs import logs
 from cogs import db
 import discord
-
 
 
 class comms(commands.Cog):
@@ -31,7 +29,8 @@ class comms(commands.Cog):
             desc += "\n" + pings[1]
         if pings[0] != '-':
             desc += "\n" + pings[0]
-        embed=discord.Embed(title="Кто пнул", description=desc)
+
+        embed = discord.Embed(title="Кто пнул", description=desc)
         await ctx.reply(embed=embed, mention_author=False)
 
     @commands.command()
@@ -47,7 +46,11 @@ class comms(commands.Cog):
 
     @commands.command(aliases=["repeat"])
     async def echo(self, ctx, *, msg=''):
-        await ctx.send(msg, allowed_mentions=discord.AllowedMentions(everyone=False, users=False, roles=False))
+        await ctx.send(msg, allowed_mentions=discord.AllowedMentions(
+            everyone=False,
+            users=False,
+            roles=False))
+
 
 def setup(bot):
     bot.add_cog(comms(bot))

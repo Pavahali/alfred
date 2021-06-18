@@ -54,6 +54,5 @@ class admin(commands.Cog):
             await ctx.send('Еблан, не то действие!')
 
 
-
 def setup(bot):
     bot.add_cog(admin(bot))

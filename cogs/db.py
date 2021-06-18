@@ -2,10 +2,9 @@
 from aiofile import async_open
 from cogs import logs
 import json
-import os
 
 async def duser(userid):
-    async with async_open('./cogs/db.json','r') as f:
+    async with async_open('./cogs/db.json', 'r') as f:
         db = json.loads(await f.read())
 
     del db["users"][userid]
@@ -18,7 +17,7 @@ async def duser(userid):
 
 
 async def wuser(userid, content):
-    async with async_open('./cogs/db.json','r') as f:
+    async with async_open('./cogs/db.json', 'r') as f:
         db = json.loads(await f.read())
 
     if str(userid) in db["users"]:
