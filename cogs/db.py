@@ -3,6 +3,7 @@ from aiofile import async_open
 from cogs import logs
 import json
 
+
 async def duser(userid):
     async with async_open('./cogs/db.json', 'r') as f:
         db = json.loads(await f.read())

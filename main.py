@@ -21,6 +21,7 @@ async def stats(ctx):
     embed.add_field(name="Размер бд", value=f"{round(os.path.getsize('cogs/db.json') / 1024, 2)} килобайт", inline=True)
     await ctx.send(embed=embed)
 
+client.load_extension('cogs.funstuff')
 client.load_extension('cogs.events')
 client.load_extension('cogs.status')
 client.load_extension('cogs.admin')
