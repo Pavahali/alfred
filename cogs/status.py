@@ -30,6 +30,12 @@ class status(commands.Cog):
             "Radiohead - No Surprises",
             "Radiohead - Creep",
 
+            "Red Hot Chilli Peppers - Californication",
+            "Red Hot Chilli Peppers - Dani California",
+            "Red Hot Chilli Peppers - Show (Hey Oh)",
+            "Red Hot Chilli Peppers - Can't Stop",
+            "Red Hot Chilli Peppers - Otherside",
+
             "Sex Pistols - God Save The Queen",
             "Sex Pistols - Anarchy In The UK",
             "Sex Pistols - I Wanna Be Me",
