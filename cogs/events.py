@@ -1,8 +1,9 @@
+from datetime import datetime as dt
 from discord.ext import commands
-import datetime as dt
 from cogs import logs
 from cogs import db
 import discord
+import time
 
 class events(commands.Cog):
     def __init__(self, bot):
@@ -19,10 +20,16 @@ class events(commands.Cog):
     async def on_message(self, message):
         if message.mentions:
             for i in message.mentions:
-                user = await db.ruser(i.id)
-                user["lastpinged"].append({"id":str(message.author.id), "time": dt.timestamp()})
-                user["lastpinged"].pop(0)
-                await db.wuser(i.id, user)
+                if i != message.author:
+                    user = await db.ruser(i.id)
+                    user["lastpinged"].append({"id":str(message.author.id), "time": time.time()})
+                    user["lastpinged"].pop(0)
+                    await db.wuser(i.id, user)
+
+                    user = await db.ruser(message.author.id)
+                    user["userpings"].append({"id":str(i.id), "time": time.time()})
+                    user["userpings"].pop(0)
+                    await db.wuser(message.author.id, user)
 
     @commands.Cog.listener()
     async def on_message_delete(self, message):

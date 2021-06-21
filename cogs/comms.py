@@ -1,6 +1,6 @@
+from datetime import datetime as dt
 from discord.ext import commands
 from pyfiglet import Figlet
-from datetime import datetime as dt
 from cogs import db
 import discord
 

@@ -45,4 +45,4 @@ async def ruser(userid):
         await wuser(userid, db["default"]["user"])
         logs.log(f'created new user for {userid}', '0')
 
-        return db["dblook"]
+        return db["default"]["user"]

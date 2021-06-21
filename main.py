@@ -18,7 +18,7 @@ async def stats(ctx):
     embed.add_field(name="Пинг", value=round(ctx.bot.latency, 2) * 100, inline=True)
     embed.add_field(name="Размер nohup", value=f"{round(os.path.getsize('nohup.out') / 1024, 2)} килобайт", inline=True)
     embed.add_field(name="Размер логов", value=f"{round(os.path.getsize('logs.log') / 1024, 2)} килобайт", inline=True)
-    embed.add_field(name="Размер бд", value=f"{round(os.path.getsize('cogs/db.json') / 1024, 2)} килобайт", inline=True)
+    embed.add_field(name="Размер бд", value=f"{round(os.path.getsize('db.json') / 1024, 2)} килобайт", inline=True)
     await ctx.send(embed=embed)
 
 client.load_extension('cogs.funstuff')
@@ -26,5 +26,6 @@ client.load_extension('cogs.events')
 client.load_extension('cogs.status')
 client.load_extension('cogs.admin')
 client.load_extension('cogs.comms')
+client.load_extension('cogs.users')
 
 client.run(open('token.txt').read())
