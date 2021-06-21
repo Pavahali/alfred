@@ -5,12 +5,12 @@ import json
 
 
 async def duser(userid):
-    async with async_open('./cogs/db.json', 'r') as f:
+    async with async_open('./db.json', 'r') as f:
         db = json.loads(await f.read())
 
     del db["users"][userid]
 
-    async with async_open('./cogs/db.json', 'w') as f:
+    async with async_open('./db.json', 'w') as f:
         f.seek(0)
         await f.write(json.dumps(db, indent=4))
 
@@ -18,15 +18,15 @@ async def duser(userid):
 
 
 async def wuser(userid, content):
-    async with async_open('./cogs/db.json', 'r') as f:
+    async with async_open('./db.json', 'r') as f:
         db = json.loads(await f.read())
 
-    if str(userid) in db["users"]:
-        db["users"][str(userid)].update(content)
+    if userid in db["users"]:
+        db["users"][userid].update(content)
     else:
-        db["users"][str(userid)] = content
+        db["users"][userid] = content
 
-    async with async_open('./cogs/db.json', 'w') as f:
+    async with async_open('./db.json', 'w') as f:
         f.seek(0)
         await f.write(json.dumps(db, indent=4))
 
@@ -36,13 +36,13 @@ async def wuser(userid, content):
 async def ruser(userid):
     userid = str(userid)
 
-    async with async_open('./cogs/db.json', 'r') as f:
+    async with async_open('./db.json', 'r') as f:
         db = json.loads(await f.read())
 
     if userid in db["users"]:
         return db["users"][userid]
     else:
-        await wuser(userid, db["dblook"])
+        await wuser(userid, db["default"]["user"])
         logs.log(f'created new user for {userid}', '0')
 
         return db["dblook"]

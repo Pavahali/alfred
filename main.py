@@ -26,6 +26,5 @@ client.load_extension('cogs.events')
 client.load_extension('cogs.status')
 client.load_extension('cogs.admin')
 client.load_extension('cogs.comms')
-client.load_extension('cogs.errs')
 
 client.run(open('token.txt').read())

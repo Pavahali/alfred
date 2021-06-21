@@ -1,0 +1,45 @@
+{
+    "users": {},
+    "guilds": {},
+    "default": {
+        "user": {
+            "userpings": [
+                {
+                    "id": 0,
+                    "time": 0
+                },
+                {
+                    "id": 0,
+                    "time": 0
+                },
+                {
+                    "id": 0,
+                    "time": 0
+                }
+            ],
+            "lastpinged": [
+                {
+                    "id": 0,
+                    "time": 0
+                },
+                {
+                    "id": 0,
+                    "time": 0
+                },
+                {
+                    "id": 0,
+                    "time": 0
+                }
+            ],
+            "version": 1.0
+        },
+        "guild": {
+            "botchannel": 0,
+            "version": 1.0
+        }
+    },
+    "version": {
+        "user": 1.0,
+        "guild": 1.0
+    }
+}
