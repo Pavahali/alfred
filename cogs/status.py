@@ -7,6 +7,11 @@ class status(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.songs = [
+            "Brutto - Воины света",
+            "Brutto - Родны край",
+            "Brutto - Папяроска",
+            "Brutto - Матрёшка",
+
             "Metallica - Nothing Else Matters",
             "Metallica - The Unforgiven",
             "Metallica - Enter Sandman",
@@ -14,7 +19,7 @@ class status(commands.Cog):
 
             "Nirvana - Smells Like Teen Spirit",
             "Nirvana - Heart-Shaped Box",
-            "<Песня была удалена по причине отсутствия культурного развития музыкальных ценностей одного из одменов>",
+            "Nirvana - Rape Me",
             "Nirvana - Polly",
             "Nirvana - Dumb",
 
@@ -36,10 +41,10 @@ class status(commands.Cog):
             "Red Hot Chilli Peppers - Can't Stop",
             "Red Hot Chilli Peppers - Otherside",
 
-            "<Песня была удалена по причине отсутствия культурного развития музыкальных ценностей одного из одменов>",
-            "<Песня была удалена по причине отсутствия культурного развития музыкальных ценностей одного из одменов>",
-            "<Песня была удалена по причине отсутствия культурного развития музыкальных ценностей одного из одменов>",
-            "<Песня была удалена по причине отсутствия культурного развития музыкальных ценностей одного из одменов>",
+            "Sex Pistols - God Save The Queen",
+            "Sex Pistols - Anarchy in the UK",
+            "Sex Pistols - I Wanna Be Me",
+            "Sex Pistols - Bodies",
 
             "System Of A Down - Lost In Hollywood",
             "System Of A Down - Chop Suey!",
@@ -53,19 +58,25 @@ class status(commands.Cog):
             "The Beatles - Let It Be",
             "The Beatles - Yesterday",
 
-            "<Песня была удалена по причине отсутствия культурного развития музыкальных ценностей одного из одменов>",
-            "<Песня была удалена по причине отсутствия культурного развития музыкальных ценностей одного из одменов>",
-            "<Песня была удалена по причине отсутствия культурного развития музыкальных ценностей одного из одменов>",
-            "<Песня была удалена по причине отсутствия культурного развития музыкальных ценностей одного из одменов>"
+            "Земфира - Аривидерчи",
+            "Земфира - Хочешь?",
+            "Земфира - Ромашки",
+            "Земфира - Искала",            
+
+            "Порнофильмы - Прости. Прощай. Привет",
+            "Порнофильмы - Я так соскучился",
+            "Порнофильмы - Уроки любви",
+            "Порнофильмы - Это пройдёт",
+            "Порнофильмы - Чужое горе",
         ]
 
         self.changer.start()
 
-    @tasks.loop(minutes=5.0)
+    @tasks.loop(hours=5.0)
     async def changer(self):
         await self.bot.change_presence(activity=discord.Activity(
             type=discord.ActivityType.listening,
-            name=random.choice(self.songs)))
+            name="Happy birthday, Cave"))
 
     @changer.before_loop
     async def before_printer(self):
