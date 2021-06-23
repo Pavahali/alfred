@@ -61,7 +61,7 @@ class status(commands.Cog):
             "Земфира - Аривидерчи",
             "Земфира - Хочешь?",
             "Земфира - Ромашки",
-            "Земфира - Искала",            
+            "Земфира - Искала",
 
             "Порнофильмы - Прости. Прощай. Привет",
             "Порнофильмы - Я так соскучился",
@@ -76,7 +76,7 @@ class status(commands.Cog):
     async def changer(self):
         await self.bot.change_presence(activity=discord.Activity(
             type=discord.ActivityType.listening,
-            name="Happy birthday, Cave"))
+            name=random.choice(self.songs)))
 
     @changer.before_loop
     async def before_printer(self):

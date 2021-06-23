@@ -8,12 +8,17 @@ class users(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+        
     @commands.command()
-    async def userinfo(self, ctx, userid=''):
+    async def userinfo(self, ctx, userid=None):
         if not ctx.message.mentions:
-            user = await self.bot.fetch_user(userid)
-            if not user:
-                await ctx.send("Нужно указать айдишник или пингануть юзера")
+            if not userid:
+                user = ctx.author
+            else:
+                try:
+                    user = await self.bot.fetch_user(userid)
+                except:
+                    await ctx.send("Инвалидный юзер")
         else:
             user = ctx.message.mentions[0]
 
@@ -37,8 +42,8 @@ class users(commands.Cog):
         embed=discord.Embed(title="Инфа о юзере", description=user)
         embed.add_field(name="Бот?", value=user.bot, inline=True)
         embed.add_field(name="Дата создания акка", value=user.created_at, inline=True)
-        embed.add_field(name="Айдишник", value=user.id, inline=True)
-        embed.add_field(name="Пинги", value=userpings, inline=True)
+        embed.add_field(name="Карма", value=len(info["karma"]), inline=True)
+        embed.add_field(name="Пинги", value=userpings, inline=False)
         await ctx.send(embed=embed)
 
 def setup(bot):
