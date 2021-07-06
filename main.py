@@ -6,7 +6,7 @@ intents = discord.Intents().all()
 client = commands.Bot(command_prefix='.', intents=intents)
 client.remove_command('help')
 
-@bot.group()
+@client.group()
 async def help(ctx):
     if not ctx.invoked_subcommand:
         embed=discord.Embed(title="Категории")
