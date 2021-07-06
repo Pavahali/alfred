@@ -20,7 +20,7 @@ class comms(commands.Cog):
         else:
             await ctx.send('Только ascii!')
 
-    @commands.command(aliases=["repeat"])
+    @commands.command(aliases=["moodyblues", "repeat"])
     async def echo(self, ctx, *, msg=''):
         await ctx.send(msg, allowed_mentions=discord.AllowedMentions(
             everyone=False,
