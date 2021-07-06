@@ -12,6 +12,10 @@ class status(commands.Cog):
             "Brutto - Папяроска",
             "Brutto - Матрёшка",
 
+            "Led Zeppelin - Stairway to Heaven",
+            "Led Zeppelin - Immigrant Song",
+            "Led Zeppelin - Tangerine",
+
             "Metallica - Nothing Else Matters",
             "Metallica - The Unforgiven",
             "Metallica - Enter Sandman",
@@ -28,6 +32,10 @@ class status(commands.Cog):
             "Nizkiz - Полночь",
             "Nizkiz - Правiлы",
             "Nizkiz - Блiзка",
+
+            "Pearl Jam - Take The Long Way",
+            "Pearl Jam - Do The Evolution",
+            "Pearl Jam - Alive",
 
             "Radiohead - Fake Plastic Trees",
             "Radiohead - High and Dry",
@@ -68,6 +76,12 @@ class status(commands.Cog):
             "Порнофильмы - Уроки любви",
             "Порнофильмы - Это пройдёт",
             "Порнофильмы - Чужое горе",
+
+            # Jojo endings
+            "The Bangles - Walk like an Egyptian",
+            "Savage Garden - I want you",
+            "Enigma - Modern Crusaders",
+            "Yes! - Roundabout",
         ]
 
         self.changer.start()
