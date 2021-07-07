@@ -45,23 +45,23 @@ async def whopinged(ctx):
 @help.command()
 async def userinfo(ctx):
     embed=discord.Embed(title="userinfo")
-    embed.add_field(name="Использование", value="`.userinfo <пинг>`,`.userinfo <айди>`", inline=True)
-    embed.add_field(name="Описание", value="Просмотр информации о юзвере", inline=True)
+    embed.add_field(name="Использование", value="`.userinfo <пинг>`,`.userinfo <айди>`", inline=False)
+    embed.add_field(name="Описание", value="Просмотр информации о юзвере", inline=False)
     await ctx.send(embed=embed)
 
 @help.command()
 async def ascii(ctx):
     embed=discord.Embed(title="ascii")
-    embed.add_field(name="Использование", value="`.ascii <сообщение>`", inline=True)
-    embed.add_field(name="Описание", value="Вывод сообщения ascii артом", inline=True)
+    embed.add_field(name="Использование", value="`.ascii <сообщение>`", inline=False)
+    embed.add_field(name="Описание", value="Вывод сообщения ascii артом", inline=False)
     await ctx.send(embed=embed)
 
 @help.command()
 async def echo(ctx):
     embed=discord.Embed(title="echo")
-    embed.add_field(name="Использование", value="`.echo <сообщение>`", inline=True)
-    embed.add_field(name="Описание", value="Повтор сообщения", inline=True)
-    embed.add_field(name="Алиасы", value="`moodyblues`,`repeat`", inline=True)
+    embed.add_field(name="Использование", value="`.echo <сообщение>`", inline=False)
+    embed.add_field(name="Описание", value="Повтор сообщения", inline=False)
+    embed.add_field(name="Алиасы", value="`moodyblues`,`repeat`", inline=False)
     await ctx.send(embed=embed)
 
 @client.command()
