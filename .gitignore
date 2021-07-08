@@ -152,6 +152,7 @@ Thumbs.db
 
 
 # End of https://www.toptal.com/developers/gitignore/api/python
+todo.txt
 token.txt
 nohup.out
 db.json
