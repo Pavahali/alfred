@@ -3,6 +3,8 @@ from cogs import logs
 from cogs import db
 import subprocess
 import discord
+import os
+
 
 class admin(commands.Cog):
     def __init__(self, bot):
@@ -15,7 +17,7 @@ class admin(commands.Cog):
         self.bot.load_extension(f'cogs.{cog}')
 
         await ctx.send(f'{cog} перезагружен')
-        logs.log(f'{cog} reloaded','0')
+        logs.log(f'{cog} reloaded','1')
 
     @commands.is_owner()
     @commands.command()
@@ -23,7 +25,7 @@ class admin(commands.Cog):
         self.bot.load_extension(f'cogs.{cog}')
 
         await ctx.send(f'{cog} подгрузился')
-        logs.log(f'{cog} enabled','0')
+        logs.log(f'{cog} enabled','1')
 
     @commands.is_owner()
     @commands.command()
@@ -31,7 +33,23 @@ class admin(commands.Cog):
         self.bot.unload_extension(f'cogs.{cog}')
 
         await ctx.send(f'{cog} выключен')
-        logs.log(f'{cog} disabled', '0')
+        logs.log(f'{cog} disabled', '1')
+
+    @commands.is_owner()
+    @commands.command()
+    async def shutdown(self, ctx):
+        await ctx.send("Пока!")
+        logs.log(f'Shutting down...', '1')
+        exit()
+
+    @commands.is_owner()
+    @commands.command()
+    async def update(self, ctx):
+        await ctx.send("Перезапускаюсь...")
+        logs.log(f'Rebooting', '1')
+        os.system("nohup ./scripts/update.sh &")
+        exit()
+
 
     @commands.is_owner()
     @commands.command()

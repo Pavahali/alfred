@@ -1,6 +1,8 @@
 from discord.ext import commands
 import discord
+import sys
 import os
+
 
 intents = discord.Intents().all()
 client = commands.Bot(command_prefix='.', intents=intents)
@@ -74,6 +76,12 @@ async def stats(ctx):
     embed.add_field(name="Размер бд", value=f"{round(os.path.getsize('db.json') / 1024, 2)} килобайт", inline=True)
     await ctx.send(embed=embed)
 
+@client.event()
+async def on_ready():
+    if "github" in sys.argv:
+        channel = self.bot.get_channel(618044439939645444)
+        await channel.send("Я обновился с гитхаба!")
+        
 client.load_extension('cogs.events')
 client.load_extension('cogs.status')
 client.load_extension('cogs.admin')
