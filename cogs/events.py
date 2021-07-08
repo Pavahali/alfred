@@ -4,6 +4,7 @@ from cogs import logs
 from cogs import db
 import discord
 import time
+import os
 
 class events(commands.Cog):
     def __init__(self, bot):
@@ -15,6 +16,10 @@ class events(commands.Cog):
         channel = self.bot.get_channel(618044439939645444)
         await channel.send("Я Лунтик! Я снова с вами!")
         logs.log('bot has started', '0')
+
+        if '.fromgithub' in os.walk('./'):
+            await channel.send("Я обновился с гитхаба кста")
+            os.system("rm .fromgithub")
 
     @commands.Cog.listener()
     async def on_message(self, message):

@@ -1,2 +1,3 @@
 git pull
-nohup python3 main.py github &
+touch .fromgithub
+nohup python3 main.py github
