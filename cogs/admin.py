@@ -45,7 +45,8 @@ class admin(commands.Cog):
     @commands.is_owner()
     @commands.command()
     async def update(self, ctx):
-        await ctx.send("Перезапускаюсь...")
+        channel = self.bot.get_channel(618044439939645444)
+        await channel.send("Обновляюсь с гитхаба...")
         logs.log(f'Rebooting', '1')
         os.system("nohup ./scripts/update.sh &")
         exit()
