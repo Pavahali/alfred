@@ -54,9 +54,9 @@ class events(commands.Cog):
 
         if str(message.author) == 'alfred#0683':
             logs.log('somebody deleted my message', '0')
-            if message.content.startswith("Удалено"):
+            if message.content.startswith("Удалено сообщение"):
                 await message.channel.send(f'Кто-то удалил сообщение... Я написал, что:\n{message.content}')
-            elif message.content.startswith('Кто-то удалил'):
+            elif message.content.startswith("Кто-то удалил"):
                 await message.channel.send(f'Кто-то удалил сообщение... Я написал, что:\n{message.content[43:]}')
 
 
