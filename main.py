@@ -13,7 +13,7 @@ async def help(ctx):
         embed=discord.Embed(title="Категории")
         embed.add_field(name="users", value="`whopinged`, `userinfo`", inline=True)
         embed.add_field(name="setup", value="<Тут пока ничего нет>", inline=True)
-        embed.add_field(name="other", value="`ascii`, `echo`", inline=True)
+        embed.add_field(name="other", value="`ascii`, `clear`, `echo`", inline=True)
         await ctx.send(embed=embed)
 
 @help.command()
@@ -33,6 +33,7 @@ async def other(ctx):
     embed=discord.Embed(title="Other", description="Команды не попадающие не под какую категорию")
     embed.add_field(name="ascii", value="Вывод сообщения ascii артом", inline=False)
     embed.add_field(name="echo", value="Повтор сообщения", inline=False)
+    embed.add_field(name="clear", value="Очистка чата", inline=False)
     await ctx.send(embed=embed)
 
 @help.command()
@@ -56,6 +57,14 @@ async def ascii(ctx):
     embed.add_field(name="Использование", value="`.ascii <сообщение>`", inline=False)
     embed.add_field(name="Описание", value="Вывод сообщения ascii артом", inline=False)
     await ctx.send(embed=embed)
+
+@help.command()
+async def clear(ctx):
+    embed=discord.Embed(title="ascii")
+    embed.add_field(name="Использование", value="`.clear <кол-во сообщений>`", inline=False)
+    embed.add_field(name="Описание", value="Очистка чата", inline=False)
+    await ctx.send(embed=embed)
+
 
 @help.command()
 async def echo(ctx):

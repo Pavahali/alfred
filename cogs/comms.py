@@ -2,12 +2,22 @@ from datetime import datetime as dt
 from discord.ext import commands
 from pyfiglet import Figlet
 from cogs import db
+import asyncio
 import discord
 
 
 class comms(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    @commands.command()
+    @commands.has_permissions(manage_messages=True)
+    async def clear(self, ctx, amount:int):
+        await ctx.channel.purge(limit=amount + 1)
+        message = await ctx.send(f"Удалено {amount} сообщений")
+        await asyncio.sleep(10)
+        await message.delete()
+
 
     @commands.command()
     async def ascii(self, ctx, *, text):
