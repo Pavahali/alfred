@@ -13,7 +13,8 @@ class comms(commands.Cog):
     @commands.command()
     @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount:int):
-        await ctx.channel.purge(limit=(lambda x: 1 if x <= 0 else 100 if x >= 101 else x)(amount + 1))
+        amount = (lambda x: 1 if x <= 0 else 100 if x >= 101 else x)(amount + 1)
+        await ctx.channel.purge(limit=amount)
         message = await ctx.send(f"Удалено {amount} сообщений")
         await asyncio.sleep(10)
         await message.delete()
