@@ -2,6 +2,7 @@ from datetime import datetime as dt
 from discord.ext import commands
 from cogs import logs
 from cogs import db
+import settings
 import discord
 import time
 
@@ -12,8 +13,9 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print('Я запустився')
-        channel = self.bot.get_channel(618044439939645444)
-        await channel.send("Я Лунтик! Я снова с вами!")
+        for i in settings.logchannels:
+            channel = self.bot.get_channel(i)
+            await channel.send("Я Лунтик! Я снова с вами!")
         logs.log('bot has started', '0')
 
     @commands.Cog.listener()

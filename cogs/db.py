@@ -1,16 +1,17 @@
 # Not a cog
 from aiofile import async_open
 from cogs import logs
+import settings
 import json
 
 
 async def duser(userid):
-    async with async_open('./db.json', 'r') as f:
+    async with async_open(settings.db, 'r') as f:
         db = json.loads(await f.read())
 
     del db["users"][userid]
 
-    async with async_open('./db.json', 'w') as f:
+    async with async_open(settings.db, 'w') as f:
         f.seek(0)
         await f.write(json.dumps(db, indent=4))
 
@@ -18,7 +19,7 @@ async def duser(userid):
 
 
 async def wuser(userid, content):
-    async with async_open('./db.json', 'r') as f:
+    async with async_open(settings.db, 'r') as f:
         db = json.loads(await f.read())
 
     if userid in db["users"]:
@@ -26,7 +27,7 @@ async def wuser(userid, content):
     else:
         db["users"][userid] = content
 
-    async with async_open('./db.json', 'w') as f:
+    async with async_open(settings.db, 'w') as f:
         f.seek(0)
         await f.write(json.dumps(db, indent=4))
 
@@ -36,7 +37,7 @@ async def wuser(userid, content):
 async def ruser(userid):
     userid = str(userid)
 
-    async with async_open('./db.json', 'r') as f:
+    async with async_open(settings.db, 'r') as f:
         db = json.loads(await f.read())
 
     if userid in db["users"]:
