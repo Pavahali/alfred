@@ -1,7 +1,7 @@
 # Not a cog
 from aiofile import async_open
-from cogs import logs
 import settings
+import logs
 import json
 
 

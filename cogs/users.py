@@ -1,7 +1,7 @@
 from datetime import datetime as dt
 from discord.ext import commands
-from cogs import db
 import discord
+import db
 
 
 class users(commands.Cog):
