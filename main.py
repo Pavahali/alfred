@@ -91,4 +91,4 @@ client.load_extension('cogs.admin')
 client.load_extension('cogs.comms')
 client.load_extension('cogs.users')
 
-client.run(open('token.txt').read())
+client.run(settings.token)
