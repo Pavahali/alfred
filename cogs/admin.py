@@ -2,6 +2,7 @@ from discord.ext import commands
 from exts import logs
 from exts import db
 import subprocess
+import settings
 import discord
 import os
 
@@ -45,8 +46,9 @@ class admin(commands.Cog):
     @commands.is_owner()
     @commands.command()
     async def update(self, ctx):
-        channel = self.bot.get_channel(618044439939645444)
-        await channel.send("Обновляюсь с гитхаба...")
+        for i in settings.logchannels:
+            channel = self.bot.get_channel(i)
+            await channel.send("Обновляюсь с гитхаба...")
         logs.log(f'Rebooting', '1')
         os.system("nohup ./scripts/update.sh &")
         exit()

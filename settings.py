@@ -1,7 +1,7 @@
 # All settings
 import os
 
-version = 0.8
+version = 0.9
 db = './info/db.json'
 logs = './info/logs.log'
 token = os.getenv('alfred')
