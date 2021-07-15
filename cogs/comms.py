@@ -1,9 +1,9 @@
 from datetime import datetime as dt
 from discord.ext import commands
 from pyfiglet import Figlet
+from exts import db
 import asyncio
 import discord
-import db
 
 
 class comms(commands.Cog):

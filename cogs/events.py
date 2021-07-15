@@ -1,10 +1,10 @@
 from datetime import datetime as dt
 from discord.ext import commands
+from exts import logs
+from exts import db
 import settings
 import discord
 import time
-import logs
-import db
 
 class events(commands.Cog):
     def __init__(self, bot):

@@ -1,7 +1,7 @@
 from datetime import datetime as dt
 from discord.ext import commands
+from exts import db
 import discord
-import db
 
 
 class users(commands.Cog):
@@ -64,7 +64,6 @@ class users(commands.Cog):
         embed=discord.Embed(title="Инфа о юзере", description=user)
         embed.add_field(name="Бот?", value=user.bot, inline=True)
         embed.add_field(name="Дата создания акка", value=user.created_at, inline=True)
-        embed.add_field(name="Карма", value=len(info["karma"]), inline=True)
         embed.add_field(name="Пинги", value=userpings, inline=False)
         await ctx.send(embed=embed)
 

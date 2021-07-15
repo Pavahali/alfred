@@ -1,8 +1,8 @@
 from discord.ext import commands
+from exts import logs
+from exts import db
 import subprocess
 import discord
-import logs
-import db
 import os
 
 
