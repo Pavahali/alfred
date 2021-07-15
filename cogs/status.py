@@ -66,6 +66,8 @@ class status(commands.Cog):
             "The Beatles - Let It Be",
             "The Beatles - Yesterday",
 
+            "The Jins - She said",
+            
             "Земфира - Аривидерчи",
             "Земфира - Хочешь?",
             "Земфира - Ромашки",
