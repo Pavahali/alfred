@@ -6,7 +6,7 @@ import random
 class status(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.songs = [
+        self.songs = (
             "Brutto - Воины света",
             "Brutto - Родны край",
             "Brutto - Папяроска",
@@ -67,7 +67,7 @@ class status(commands.Cog):
             "The Beatles - Yesterday",
 
             "The Jins - She said",
-            
+
             "Земфира - Аривидерчи",
             "Земфира - Хочешь?",
             "Земфира - Ромашки",
@@ -90,7 +90,7 @@ class status(commands.Cog):
             "Savage Garden - I want you",
             "Enigma - Modern Crusaders",
             "Yes! - Roundabout",
-        ]
+        )
 
         self.changer.start()
 

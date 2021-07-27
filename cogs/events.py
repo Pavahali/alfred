@@ -5,6 +5,7 @@ from exts import db
 import settings
 import discord
 import time
+import gc
 
 class events(commands.Cog):
     def __init__(self, bot):
@@ -16,6 +17,7 @@ class events(commands.Cog):
         for i in settings.logchannels:
             channel = self.bot.get_channel(i)
             await channel.send("Я Лунтик! Я снова с вами!")
+        gc.enable()
         logs.log('bot has started', '0')
 
     @commands.Cog.listener()

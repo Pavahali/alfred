@@ -57,11 +57,11 @@ class admin(commands.Cog):
     @commands.is_owner()
     @commands.command()
     async def changedb(self, ctx, action, userid, msg=''):
-        if action.lower() in ["del", "rem", "delete", "remove"]:
+        if action.lower() in ("del", "rem", "delete", "remove"):
             await db.duser(userid)
             await ctx.send(f'Юзер с айдишником {userid} был удалён')
 
-        elif action.lower() in ["read", "get"]:
+        elif action.lower() in ("read", "get"):
             user = await db.ruser(userid)
             await ctx.send('```\n'+str(user).replace(',', ',\n')+'\n```')
 
