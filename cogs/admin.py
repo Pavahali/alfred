@@ -42,32 +42,6 @@ class admin(commands.Cog):
         await ctx.send("Пока!")
         logs.log(f'Shutting down...', '1')
         exit()
-
-    @commands.is_owner()
-    @commands.command()
-    async def update(self, ctx):
-        for i in settings.logchannels:
-            channel = self.bot.get_channel(i)
-            await channel.send("Обновляюсь с гитхаба...")
-        logs.log(f'Rebooting', '1')
-        os.system("nohup ./scripts/update.sh &")
-        exit()
-
-
-    @commands.is_owner()
-    @commands.command()
-    async def changedb(self, ctx, action, userid, msg=''):
-        if action.lower() in ("del", "rem", "delete", "remove"):
-            await db.duser(userid)
-            await ctx.send(f'Юзер с айдишником {userid} был удалён')
-
-        elif action.lower() in ("read", "get"):
-            user = await db.ruser(userid)
-            await ctx.send('```\n'+str(user).replace(',', ',\n')+'\n```')
-
-        else:
-            await ctx.send('Еблан, не то действие!')
-
-
+        
 def setup(bot):
     bot.add_cog(admin(bot))
