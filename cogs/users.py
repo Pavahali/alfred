@@ -17,13 +17,23 @@ class users(commands.Cog):
                     "SELECT lastpings FROM users WHERE id = ?", (ctx.author.id,)) as cursor:
                 async for row in cursor:
                     user = row[0].split(';')
+                    count = 0
+                    for ping in user:
+                        user[count] = ping.split('.')
+                        count += 1
 
         embed = discord.Embed(title="Кто пнул")
 
         if user:
             out = ''
             for ping in user:
-                out += f'\n<@{ping}>'
+                try:
+                    msg = await ctx.fetch_message(int(ping[2]))
+                    msg = f'([ссылка]({msg.jump_url}))'
+                except:
+                    msg = '(сообщение удалено)'
+
+                out += f'\n<@{ping[0]}> <t:{ping[1]}:R> {msg}'
             embed.add_field(name=f'Пинги {ctx.author.name}', value=out)
         else:
             embed.add_field(name='Всё пусто', value='Тут ничего няма')

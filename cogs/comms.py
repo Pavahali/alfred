@@ -16,7 +16,10 @@ class comms(commands.Cog):
         await ctx.channel.purge(limit=amount)
         message = await ctx.send(f"Удалено {amount} сообщений")
         await asyncio.sleep(10)
-        await message.delete()
+        try:
+            await message.delete()
+        except:
+            pass
 
     @commands.command()
     async def ascii(self, ctx, *, text):

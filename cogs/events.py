@@ -1,5 +1,6 @@
 from discord.ext import commands
 from exts import logs
+from time import time
 import aiosqlite
 import settings
 import gc
@@ -28,13 +29,22 @@ class events(commands.Cog):
                         async with db.execute("SELECT lastpings FROM users WHERE id = ?", (mentioned.id,)) as cursor:
                             async for row in cursor:
                                 user = row[0].split(';')
+                                count = 0
+                                for ping in user:
+                                    user[count] = ping.split('.')
+                                    count += 1
                             if not user:
                                 await db.execute("INSERT INTO users(id, lastpings) VALUES(?, ?)", (mentioned.id, '',))
 
                         if len(user) >= settings.pinglimit:
                             user.pop(0)
-                        user.append(str(message.author.id))
-                        user = ';'.join(user)
+                        user.append([str(message.author.id), str(
+                            int(time())), str(message.id)])
+
+                        out = []
+                        for ping in user:
+                            out.append('.'.join(ping))
+                        user = ';'.join(out)
 
                         await db.execute("UPDATE users SET lastpings=? WHERE id=?", (user, mentioned.id,))
                         await db.commit()
