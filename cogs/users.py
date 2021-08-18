@@ -14,7 +14,7 @@ class users(commands.Cog):
         user = ''
         async with aiosqlite.connect(settings.db) as db:
             async with db.execute(
-                    "SELECT lastpings FROM users WHERE id = ?" (ctx.author.id,)) as cursor:
+                    "SELECT lastpings FROM users WHERE id = ?", (ctx.author.id,)) as cursor:
                 async for row in cursor:
                     user = row[0].split(';')
 
