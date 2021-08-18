@@ -156,3 +156,5 @@ todo.txt
 nohup.out
 db.json
 dbbackup.json
+token.txt
+*.db-journal

@@ -1,11 +1,9 @@
-from datetime import datetime as dt
 from discord.ext import commands
 from exts import logs
-from exts import db
+import aiosqlite
 import settings
-import discord
-import time
 import gc
+
 
 class events(commands.Cog):
     def __init__(self, bot):
@@ -23,17 +21,23 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.mentions:
-            for i in message.mentions:
-                if i != message.author:
-                    user = await db.ruser(i.id)
-                    user["lastpinged"].append({"id":str(message.author.id), "time": time.time()})
-                    user["lastpinged"].pop(0)
-                    await db.wuser(i.id, user)
+            for mentioned in message.mentions:
+                if mentioned != message.author:
+                    user = []
+                    async with aiosqlite.connect(settings.db) as db:
+                        async with db.execute("SELECT lastpings FROM users WHERE id = ?", (mentioned.id,)) as cursor:
+                            async for row in cursor:
+                                user = row[0].split(';')
+                            if not user:
+                                await db.execute("INSERT INTO users(id, lastpings) VALUES(?, ?)", (mentioned.id, '',))
 
-                    user = await db.ruser(message.author.id)
-                    user["userpings"].append({"id":str(i.id), "time": time.time()})
-                    user["userpings"].pop(0)
-                    await db.wuser(message.author.id, user)
+                        if len(user) >= settings.pinglimit:
+                            user.pop(0)
+                        user.append(str(message.author.id))
+                        user = ';'.join(user)
+
+                        await db.execute("UPDATE users SET lastpings=? WHERE id=?", (user, mentioned.id,))
+                        await db.commit()
 
     @commands.Cog.listener()
     async def on_message_delete(self, message):
@@ -46,7 +50,7 @@ class events(commands.Cog):
                 if str(message.author) in pings:
                     return
                 elif 'alfred#0683' in pings:
-                    await message.channel.send(f'Удалено сообщение, с пингом меня')
+                    await message.channel.send('Удалено сообщение, с пингом меня')
                     return
                 await message.channel.send(f'Удалено сообщение `{message.author}` с пингом `{pings[0]}`\n')
             else:

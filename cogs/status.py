@@ -12,6 +12,14 @@ class status(commands.Cog):
             "Brutto - Папяроска",
             "Brutto - Матрёшка",
 
+            "Daft Punk - Lose Yourself To Dance",
+            "Daft Punk - Giorgio by Moroder",
+            "Daft Punk - Instant Crush",
+            "Daft Punk - Get Lucky",
+            "Daft Punk - Touch",
+
+            "Foo Fighters - Everlong",
+
             "Led Zeppelin - Stairway to Heaven",
             "Led Zeppelin - Immigrant Song",
             "Led Zeppelin - Tangerine",
@@ -32,6 +40,12 @@ class status(commands.Cog):
             "Nizkiz - Полночь",
             "Nizkiz - Правiлы",
             "Nizkiz - Блiзка",
+
+            "Marcy Playground - Sex & Candy",
+
+            "Marylin Manson - Beautiful People",
+            "Marylin Manson - The Fight Song",
+            "Marylin Manson - Tainted Love",
 
             "Pearl Jam - Take The Long Way",
             "Pearl Jam - Do The Evolution",
@@ -66,7 +80,14 @@ class status(commands.Cog):
             "The Beatles - Let It Be",
             "The Beatles - Yesterday",
 
-            "The Jins - She said",
+            "The Cranberries - Hollywood",
+            "The Cranberries - Zombie",
+
+            "The Jins - Jack Skellington",
+            "The Jins - Death Wish",
+            "The Jins - Pop Song",
+            "The Jins - She Said",
+            "The Jins - Radio",
 
             "Земфира - Аривидерчи",
             "Земфира - Хочешь?",

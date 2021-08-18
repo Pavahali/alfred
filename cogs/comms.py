@@ -1,7 +1,5 @@
-from datetime import datetime as dt
 from discord.ext import commands
 from pyfiglet import Figlet
-from exts import db
 import asyncio
 import discord
 
@@ -12,13 +10,13 @@ class comms(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(manage_messages=True)
-    async def clear(self, ctx, amount:int):
-        amount = (lambda x: 1 if x <= 0 else 100 if x >= 101 else x)(amount + 1)
+    async def clear(self, ctx, amount: int = 1):
+        amount = (lambda x: 1 if x <= 0 else 100 if x
+                  >= 101 else x)(amount + 1)
         await ctx.channel.purge(limit=amount)
         message = await ctx.send(f"Удалено {amount} сообщений")
         await asyncio.sleep(10)
         await message.delete()
-
 
     @commands.command()
     async def ascii(self, ctx, *, text):
@@ -37,6 +35,7 @@ class comms(commands.Cog):
             everyone=False,
             users=False,
             roles=False))
+
 
 def setup(bot):
     bot.add_cog(comms(bot))
