@@ -29,7 +29,7 @@ class users(commands.Cog):
             for ping in user:
                 try:
                     msg = await ctx.fetch_message(int(ping[2]))
-                    msg = f'([ссылка]({msg.jump_url}))'
+                    msg = f'([перейти]({msg.jump_url}))'
                 except:
                     msg = '(сообщение удалено)'
 
