@@ -157,3 +157,4 @@ nohup.out
 token.txt
 database.db
 *.db-journal
+console.py
